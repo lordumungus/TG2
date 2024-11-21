@@ -1,0 +1,139 @@
+/* Estilo geral do modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.modal-content {
+  background-color: #5e7f9c7c;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden; /* Garante que o conteúdo fique dentro do modal */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaçamento entre os elementos */
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s ease; /* Adiciona uma transição suave */
+}
+
+.close:hover {
+  color: #666; /* Muda a cor ao passar o mouse */
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f1eaf8;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  box-sizing: border-box; /* Garante que o padding seja considerado no tamanho total */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ffffff;
+  background-color: rgb(255, 255, 255);
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: auto; /* Permite que o botão seja dimensionado automaticamente */
+  margin-top: 10px; /* Adiciona espaçamento superior aos botões */
+}
+
+button[type="submit"] {
+  background-color:  #2a9df4;
+  color: #333;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background-color:  #2a9dfd;
+}
+
+button.close-btn {
+  background-color: #ddd;
+  color: #333;
+}
+
+button.close-btn:hover {
+  background-color: #ccc;
+}
+
+/* Adiciona espaçamento entre os botões */
+button:not(:last-child) {
+  margin-bottom: 10px; /* Espaço entre os botões, exceto o último */
+}
+.form-sections {
+  display: flex;
+  gap: 16px; /* Espaço entre as colunas */
+}
+
+.form-section {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}

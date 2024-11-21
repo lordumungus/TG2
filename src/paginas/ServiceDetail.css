@@ -1,0 +1,119 @@
+/* Estilos gerais */
+.service-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 150px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color:  #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex-direction: row-reverse;
+}
+
+/* Imagem do serviço */
+/* Container da imagem do serviço */
+.service-image {
+  flex: 1;
+  min-width: 350px; /* Aumenta o tamanho mínimo do container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* Espaçamento para dar destaque à imagem */
+}
+.service-image:hover
+{
+  animation: rotateSwing 1s infinite alternate ease-in-out;
+  transform: scale(1.1);
+}
+/* Estilos da foto do serviço */
+.service-photo {
+  max-width: 90%; /* Permite que a imagem ocupe mais espaço no container */
+  max-height: 90%;
+  border-radius: 9px;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Informações do serviço */
+.service-info {
+  flex: 2;
+  padding: 20px;
+  margin-left: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.service-price {
+  font-size: 24px;
+  color: #2a9df4;
+  ;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.service-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.service-location,
+.service-user {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* Ações do serviço */
+.service-actions {
+  margin-top: 30px;
+}
+
+.btn-contact,
+.btn-buy {
+  background-color:#2a9df4;
+  color: #ffffff;
+  border: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 48%;
+  margin: 5px 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-contact:hover,
+.btn-buy:hover {
+  background-color:  #4a6eb1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .service-container {
+    flex-direction: column;
+  }
+
+  .service-info {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .btn-contact,
+  .btn-buy {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

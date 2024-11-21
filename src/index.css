@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.welcome-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.services-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Distância entre o container e a lista */
+}
+
+.services-list {
+  display: flex; /* Habilita o layout flexível */
+  flex-wrap: wrap; /* Permite a quebra de linha se necessário */
+  gap: 10px; /* Distância entre os itens */
+  padding: 0;
+  list-style: none;
+  max-height: 600px; /* Altura máxima para o bloco de serviços */
+  overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo exceder a altura */
+}
+
+.service-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1 0 200px; /* Flexível para uma largura mínima de 200px */
+  max-width: 300px; /* Define uma largura máxima para os itens */
+}

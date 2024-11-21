@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Contrato de Serviços Autônomo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .contract {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+        .contract-title {
+            text-align: center;
+            font-weight: bold;
+        }
+        .contract-section {
+            margin-top: 10px;
+        }
+        .contract-signature {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .contract-signature div {
+            width: 30%;
+            text-align: center;
+        }
+        label, input, select {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Preencha as informações do contrato</h2>
+<form id="formContrato">
+    <!-- Contratante -->
+    <label for="contratante">Nome do Contratante:</label>
+    <input type="text" id="contratante">
+
+    <label for="contratanteEndereco">Endereço do Contratante:</label>
+    <input type="text" id="contratanteEndereco">
+
+    <label for="contratanteCNPJ">CNPJ do Contratante:</label>
+    <input type="text" id="contratanteCNPJ" placeholder="00.000.000/0000-00" oninput="mascaraCNPJ(this)">
+
+    <label for="contratanteAdmin">Administrador do Contratante:</label>
+    <input type="text" id="contratanteAdmin">
+
+    <label for="contratanteCPF">CPF do Administrador:</label>
+    <input type="text" id="contratanteCPF" placeholder="000.000.000-00" oninput="mascaraCPF(this)">
+
+    <!-- Contratado -->
+    <label for="contratado">Nome do Contratado:</label>
+    <input type="text" id="contratado">
+
+    <label for="contratadoEndereco">Endereço do Contratado:</label>
+    <input type="text" id="contratadoEndereco">
+
+    <label for="contratadoCPF">CPF do Contratado:</label>
+    <input type="text" id="contratadoCPF" placeholder="000.000.000-00" oninput="mascaraCPF(this)">
+
+    <label for="contratadoPrefeitura">Prefeitura do Contratado:</label>
+    <input type="text" id="contratadoPrefeitura">
+
+    <label for="contratadoINSS">INSS do Contratado:</label>
+    <input type="text" id="contratadoINSS">
+
+    <!-- Serviço e Prazo -->
+    <label for="servico">Serviço a ser Prestado:</label>
+    <input type="text" id="servico">
+
+    <label for="prazo">Prazo de Execução:</label>
+    <input type="text" id="prazo">
+
+    <!-- Valor e Forma de Pagamento -->
+    <label for="valor">Valor do Serviço (R$):</label>
+    <input type="text" id="valor" placeholder="0,00" oninput="mascaraValor(this)">
+
+    <label for="formaPagamento">Forma de Pagamento:</label>
+    <select id="formaPagamento">
+        <option value="à vista">À vista</option>
+        <option value="parcelado">Parcelado</option>
+    </select>
+
+    <!-- Foro -->
+    <label for="foro">Foro:</label>
+    <input type="text" id="foro">
+
+    <button type="button" onclick="gerarContrato()">Gerar Contrato</button>
+</form>
+
+<hr>
+
+<div class="contract" id="contrato">
+    <div class="contract-title">
+        MODELO DE CONTRATO DE SERVIÇOS DE PROFISSIONAL AUTÔNOMO
+    </div>
+
+    <div class="contract-section">
+        <strong>CONTRATANTE:</strong> <span id="contratanteTexto"></span>, com sede na Rua/AV <span id="contratanteEnderecoTexto"></span>, inscrita no CNPJ sob nº <span id="contratanteCNPJTexto"></span>, neste ato representada por seu administrador <span id="contratanteAdminTexto"></span>, CPF: <span id="contratanteCPFTexto"></span>.
+    </div>
+
+    <div class="contract-section">
+        <strong>CONTRATADO:</strong> <span id="contratadoTexto"></span>, residente à Rua/AV <span id="contratadoEnderecoTexto"></span>, inscrito no CPF sob nº <span id="contratadoCPFTexto"></span>, autônomo, inscrito na Prefeitura Municipal de <span id="contratadoPrefeituraTexto"></span>, sob número: <span id="contratadoINSSTexto"></span>.
+    </div>
+
+    <div class="contract-section">
+        1. O objeto deste contrato é a elaboração de serviços autônomos de <span id="servicoTexto"></span>, com prazo de execução de <span id="prazoTexto"></span> meses/dias a partir desta contratação.
+    </div>
+
+    <div class="contract-section">
+        2. O CONTRATADO executará os serviços técnicos com zelo e dentro dos prazos solicitados pela CONTRATANTE, assumindo por si as obrigações que eventualmente contratar com terceiros, para execução da empreitada.
+    </div>
+
+    <div class="contract-section">
+        3. Em remuneração pelos serviços prestados, o CONTRATADO receberá da CONTRATANTE a quantia de R$: <span id="valorTexto"></span>, pagos da seguinte forma: <span id="formaPagamentoTexto"></span>.
+    </div>
+
+    <div class="contract-section">
+        4. O preço acima referido constituirá, a qualquer título, a única e completa remuneração do CONTRATADO pela adequada, perfeita e aceita execução deste contrato.
+    </div>
+
+    <div class="contract-section">
+        5. Fica facultado à CONTRATANTE, em caso de atraso dos serviços, executá-los diretamente, ou por terceiros. Nestes casos, o CONTRATADO fará jus ao pagamento dos serviços até então executados, nos termos e condições deste contrato.
+    </div>
+
+    <div class="contract-section">
+        6. O presente contrato será rescindido sem nenhuma formalidade, além de simples carta protocolada, face ao descumprimento de qualquer cláusula ou condição deste contrato, cabendo ao CONTRATADO, nesses casos, unicamente o recebimento do valor dos serviços concluídos até a data da rescisão.
+    </div>
+
+    <div class="contract-section">
+        7. A omissão no exercício de qualquer direito ou a maneira de exercê-lo constituir-se-ão atos de mera liberalidade, não podendo ser entendidos como novação.
+    </div>
+
+    <div class="contract-section">
+        8. As partes elegem o Foro da Comarca de <span id="foroTexto"></span> para dirimir eventuais litígios decorrentes deste contrato.
+    </div>
+
+    <div class="contract-signature">
+        <div>
+            ___________________________________<br>
+            CONTRATANTE<br>
+            Nome: <span id="contratanteNomeAssinatura"></span><br>
+            CPF: <span id="contratanteCPFAssinatura"></span>
+        </div>
+        <div>
+            ___________________________________<br>
+            CONTRATADO<br>
+            Nome: <span id="contratadoNomeAssinatura"></span><br>
+            CPF: <span id="contratadoCPFAssinatura"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function gerarContrato() {
+        // Pegando os valores do formulário
+        const contratante = document.getElementById('contratante').value;
+        const contratanteEndereco = document.getElementById('contratanteEndereco').value;
+        const contratanteCNPJ = document.getElementById('contratanteCNPJ').value;
+        const contratanteAdmin = document.getElementById('contratanteAdmin').value;
+        const contratanteCPF = document.getElementById('contratanteCPF').value;
+        const contratado = document.getElementById('contratado').value;
+        const contratadoEndereco = document.getElementById('contratadoEndereco').value;
+        const contratadoCPF = document.getElementById('contratadoCPF').value;
+        const contratadoPrefeitura = document.getElementById('contratadoPrefeitura').value;
+        const contratadoINSS = document.getElementById('contratadoINSS').value;
+        const servico = document.getElementById('servico').value;
+        const prazo = document.getElementById('prazo').value;
+        const valor = document.getElementById('valor').value;
+        const formaPagamento = document.getElementById('formaPagamento').value;
+        const foro = document.getElementById('foro').value;
+
+        // Preenchendo o contrato com os valores
+        document.getElementById('contratanteTexto').innerText = contratante;
+        document.getElementById('contratanteEnderecoTexto').innerText = contratanteEndereco;
+        document.getElementById('contratanteCNPJTexto').innerText = contratanteCNPJ;
+        document.getElementById('contratanteAdminTexto').innerText = contratanteAdmin;
+        document.getElementById('contratanteCPFTexto').innerText = contratanteCPF;
+
+        document.getElementById('contratadoTexto').innerText = contratado;
+        document.getElementById('contratadoEnderecoTexto').innerText = contratadoEndereco;
+        document.getElementById('contratadoCPFTexto').innerText = contratadoCPF;
+        document.getElementById('contratadoPrefeituraTexto').innerText = contratadoPrefeitura;
+        document.getElementById('contratadoINSSTexto').innerText = contratadoINSS;
+
+        document.getElementById('servicoTexto').innerText = servico;
+        document.getElementById('prazoTexto').innerText = prazo;
+        document.getElementById('valorTexto').innerText = valor;
+        document.getElementById('formaPagamentoTexto').innerText = formaPagamento;
+        document.getElementById('foroTexto').innerText = foro;
+
+        document.getElementById('contratanteNomeAssinatura').innerText = contratante;
+        document.getElementById('contratanteCPFAssinatura').innerText = contratanteCPF;
+        document.getElementById('contratadoNomeAssinatura').innerText = contratado;
+        document.getElementById('contratadoCPFAssinatura').innerText = contratadoCPF;
+    }
+
+    // Funções de Máscara
+    function mascaraCPF(input) {
+        input.value = input.value.replace(/\D/g, "")
+            .replace(/(\d{3})(\d)/, "$1.$2")
+            .replace(/(\d{3})(\d)/, "$1.$2")
+            .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    }
+
+    function mascaraCNPJ(input) {
+        input.value = input.value.replace(/\D/g, "")
+            .replace(/(\d{2})(\d)/, "$1.$2")
+            .replace(/(\d{3})(\d)/, "$1.$2")
+            .replace(/(\d{3})(\d{1,4})$/, "$1/$2")
+            .replace(/(\d{4})(\d{1,2})$/, "$1-$2");
+    }
+
+    function mascaraValor(input) {
+        input.value = input.value.replace(/\D/g, "")
+            .replace(/(\d)(\d{2})$/, "$1,$2")
+            .replace(/(?=(\d{3})+(\D))\B/g, ".");
+    }
+</script>
+
+</body>
+</html>
